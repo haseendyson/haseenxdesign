@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Md Haseen Akhtar — Design Researcher</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Tokens ──────────────────────────────────────────── */
+    :root {
+      --cream:    #F8F5F0;
+      --fog:      #EDE8E1;
+      --blush:    #E8D9CE;
+      --sage:     #C8D5C5;
+      --slate:    #B8C4C0;
+      --ink:      #2C2B28;
+      --mid:      #6B6760;
+      --light:    #9E9A94;
+      --accent:   #8FA68C;    /* muted sage green — health/nature nod */
+
+      --serif:    'Cormorant Garamond', Georgia, serif;
+      --sans:     'Inter', system-ui, sans-serif;
+
+      --gap:      clamp(2rem, 5vw, 4rem);
+      --col:      min(680px, 92vw);
+      --wide:     min(960px, 94vw);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Nav ─────────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--cream);
+      border-bottom: 1px solid var(--fog);
+      padding: 0.9rem var(--gap);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-name {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+
+    /* ── Sections wrapper ────────────────────────────────── */
+    section {
+      padding: var(--gap) max(var(--gap), calc((100vw - var(--wide)) / 2));
+    }
+
+    section + section {
+      border-top: 1px solid var(--fog);
+    }
+
+    /* ── Hero ────────────────────────────────────────────── */
+    #hero {
+      min-height: 80vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      padding-top: clamp(3rem, 8vh, 6rem);
+      padding-bottom: clamp(3rem, 8vh, 6rem);
+    }
+
+    .hero-text { max-width: 520px; }
+
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 300;
+      line-height: 1.12;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: 1.4rem;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      color: var(--mid);
+      font-size: 0.92rem;
+      line-height: 1.75;
+      margin-bottom: 2rem;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      padding: 0.28rem 0.75rem;
+      border: 1px solid var(--blush);
+      border-radius: 20px;
+      color: var(--mid);
+      background: transparent;
+    }
+
+    /* Photo placeholder */
+    .hero-photo {
+      aspect-ratio: 4/5;
+      background: var(--fog);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      color: var(--light);
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-align: center;
+      border: 1px dashed var(--blush);
+      max-width: 340px;
+      width: 100%;
+      justify-self: end;
+    }
+
+    .hero-photo svg { opacity: 0.4; }
+
+    /* ── Section headings ────────────────────────────────── */
+    .section-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+
+    h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 2rem;
+    }
+
+    h3 {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+    }
+
+    /* ── About / Philosophy ──────────────────────────────── */
+    #about .inner {
+      max-width: var(--col);
+    }
+
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.4rem;
+      margin-top: 2rem;
+    }
+
+    .phil-card {
+      background: var(--fog);
+      border-radius: 4px;
+      padding: 1.4rem 1.6rem;
+    }
+
+    .phil-card .label {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .phil-card p {
+      font-size: 0.88rem;
+      color: var(--mid);
+      line-height: 1.7;
+    }
+
+    /* ── Research ────────────────────────────────────────── */
+    #research .inner { max-width: var(--wide); }
+
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 3rem;
+    }
+
+    .research-card {
+      background: var(--fog);
+      border-radius: 4px;
+      padding: 1.6rem;
+    }
+
+    .research-card .num {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      color: var(--blush);
+      line-height: 1;
+      margin-bottom: 0.6rem;
+    }
+
+    .research-card p {
+      font-size: 0.85rem;
+      color: var(--mid);
+      line-height: 1.65;
+    }
+
+    /* New ideas */
+    .ideas-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .idea-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.2rem;
+      align-items: start;
+      padding: 1.2rem 1.4rem;
+      background: var(--fog);
+      border-radius: 4px;
+    }
+
+    .idea-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--sage);
+      border-radius: 50%;
+      margin-top: 0.5rem;
+    }
+
+    .idea-item h3 {
+      font-size: 0.9rem;
+      font-family: var(--sans);
+      font-weight: 500;
+      margin-bottom: 0.15rem;
+      color: var(--ink);
+    }
+
+    .idea-item p {
+      font-size: 0.82rem;
+      color: var(--mid);
+    }
+
+    /* ── Publications ────────────────────────────────────── */
+    #publications .inner { max-width: var(--col); }
+
+    .pub-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+
+    .pub-item {
+      padding-bottom: 1.4rem;
+      border-bottom: 1px solid var(--fog);
+    }
+
+    .pub-item:last-child { border-bottom: none; }
+
+    .pub-item .pub-venue {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+
+    .pub-item h3 {
+      font-size: 0.92rem;
+      font-family: var(--sans);
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
+    }
+
+    .pub-item .pub-meta {
+      font-size: 0.78rem;
+      color: var(--light);
+    }
+
+    .pub-item a {
+      font-size: 0.75rem;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .pub-item a:hover { text-decoration: underline; }
+
+    /* ── Teaching ────────────────────────────────────────── */
+    #teaching .inner { max-width: var(--wide); }
+
+    .teaching-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .teach-card {
+      padding: 1.4rem;
+      border: 1px solid var(--fog);
+      border-radius: 4px;
+    }
+
+    .teach-card .school {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+
+    .teach-card h3 {
+      font-size: 0.92rem;
+      font-family: var(--sans);
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+    }
+
+    .teach-card p {
+      font-size: 0.82rem;
+      color: var(--mid);
+    }
+
+    /* Student work placeholder strip */
+    .work-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.8rem;
+      margin-top: 2rem;
+    }
+
+    .work-placeholder {
+      aspect-ratio: 4/3;
+      background: var(--fog);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--light);
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      border: 1px dashed var(--blush);
+      text-align: center;
+      padding: 0.5rem;
+    }
+
+    /* ── Education ───────────────────────────────────────── */
+    #education .inner { max-width: var(--col); }
+
+    .edu-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .edu-item {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 1.2rem;
+      padding: 1.2rem 0;
+      border-bottom: 1px solid var(--fog);
+      align-items: start;
+    }
+
+    .edu-item:last-child { border-bottom: none; }
+
+    .edu-year {
+      font-size: 0.8rem;
+      color: var(--light);
+      padding-top: 0.1rem;
+    }
+
+    .edu-item h3 {
+      font-size: 0.92rem;
+      font-family: var(--sans);
+      font-weight: 500;
+      margin-bottom: 0.1rem;
+    }
+
+    .edu-item p {
+      font-size: 0.82rem;
+      color: var(--mid);
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      letter-spacing: 0.06em;
+      background: var(--sage);
+      color: #3a5a38;
+      padding: 0.12rem 0.5rem;
+      border-radius: 10px;
+      margin-top: 0.3rem;
+    }
+
+    /* ── Contact ─────────────────────────────────────────── */
+    #contact {
+      background: var(--fog);
+    }
+
+    #contact .inner {
+      max-width: var(--col);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .contact-text h2 { margin-bottom: 0.8rem; }
+
+    .contact-text p {
+      font-size: 0.88rem;
+      color: var(--mid);
+      margin-bottom: 1.2rem;
+    }
+
+    .contact-line {
+      font-size: 0.82rem;
+      color: var(--mid);
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-line a {
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .contact-line a:hover { text-decoration: underline; }
+
+    /* Photo slot in contact */
+    .contact-photo {
+      aspect-ratio: 3/2;
+      background: var(--blush);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--light);
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      border: 1px dashed var(--slate);
+      text-align: center;
+      padding: 1rem;
+    }
+
+    /* ── Footer ──────────────────────────────────────────── */
+    footer {
+      padding: 1.8rem var(--gap);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--fog);
+    }
+
+    footer p {
+      font-size: 0.75rem;
+      color: var(--light);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.2rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-size: 0.75rem;
+      color: var(--light);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover { color: var(--mid); }
+
+    /* ── Pencil Sketch Animations ───────────────────────── */
+
+    /* Hero h1 words fade in like they're being written */
+    .hero-text h1 .word {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(6px);
+      animation: pencil-word 0.55s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+    }
+
+    @keyframes pencil-word {
+      0%   { opacity: 0; transform: translateY(6px) skewX(2deg); }
+      60%  { opacity: 1; transform: translateY(-1px) skewX(-0.5deg); }
+      100% { opacity: 1; transform: translateY(0) skewX(0); }
+    }
+
+    /* Sketch underline: SVG drawn under section h2 */
+    .sketch-underline {
+      display: block;
+      width: 0;
+      height: 10px;
+      margin-top: 0.15rem;
+      margin-bottom: 1.85rem;
+      overflow: visible;
+    }
+
+    .sketch-underline path {
+      stroke: var(--accent);
+      stroke-width: 1.8;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 600;
+      stroke-dashoffset: 600;
+      transition: stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* When the section enters view */
+    .sketch-underline.drawn {
+      width: 100%;
+    }
+    .sketch-underline.drawn path {
+      stroke-dashoffset: 0;
+    }
+
+    /* Eyebrow letter-by-letter typewriter */
+    .hero-eyebrow {
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 1.5px solid var(--accent);
+      width: 0;
+      animation: typewriter 1.1s steps(55, end) 0.2s forwards,
+                 blink-cursor 0.7s step-end 1.3s 3;
+    }
+
+    @keyframes typewriter {
+      to { width: 100%; }
+    }
+    @keyframes blink-cursor {
+      50% { border-color: transparent; }
+    }
+
+    /* Section heading h2 writes in */
+    h2.sketch-in {
+      opacity: 0;
+      transform: translateX(-8px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    h2.sketch-in.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Cards fade and drift up on scroll */
+    .research-card,
+    .phil-card,
+    .teach-card,
+    .pub-item,
+    .idea-item,
+    .edu-item {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.45s ease, transform 0.45s ease;
+    }
+    .research-card.visible,
+    .phil-card.visible,
+    .teach-card.visible,
+    .pub-item.visible,
+    .idea-item.visible,
+    .edu-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Pencil scribble circle around em in hero */
+    .pencil-circle {
+      position: relative;
+      display: inline-block;
+    }
+    .pencil-circle svg {
+      position: absolute;
+      top: -8px;
+      left: -8px;
+      width: calc(100% + 16px);
+      height: calc(100% + 16px);
+      pointer-events: none;
+      overflow: visible;
+    }
+    .pencil-circle svg ellipse {
+      fill: none;
+      stroke: var(--accent);
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-dasharray: 400;
+      stroke-dashoffset: 400;
+      animation: draw-circle 0.9s cubic-bezier(0.4, 0, 0.2, 1) 1.6s forwards;
+    }
+    @keyframes draw-circle {
+      to { stroke-dashoffset: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-text h1 .word,
+      .hero-eyebrow,
+      h2.sketch-in,
+      .research-card, .phil-card, .teach-card,
+      .pub-item, .idea-item, .edu-item {
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
+        transition: none !important;
+        width: auto !important;
+      }
+      .sketch-underline path { stroke-dashoffset: 0 !important; }
+      .pencil-circle svg ellipse { animation: none; stroke-dashoffset: 0; }
+    }
+
+    /* ── Responsive ──────────────────────────────────────── */
+    @media (max-width: 720px) {
+      #hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      .hero-photo { display: none; }
+      #contact .inner { grid-template-columns: 1fr; }
+      .contact-photo { display: none; }
+      .work-strip { grid-template-columns: repeat(2, 1fr); }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-name" href="#hero">Md Haseen Akhtar</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#teaching">Teaching</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow">Assistant Professor · IIT Hyderabad · Department of Design</p>
+    <h1>
+      <span class="word" style="animation-delay:1.2s">See.</span>
+      <em class="word pencil-circle" style="animation-delay:1.45s">Feel.
+        <svg viewBox="0 0 80 36" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <ellipse cx="40" cy="18" rx="36" ry="14" transform="rotate(-3 40 18)"/>
+        </svg>
+      </em>
+      <span class="word" style="animation-delay:1.7s">Act.</span>
+    </h1>
+    <p class="hero-sub">
+      I design at the intersection of healthcare, human experience, and emerging technology — asking what design can do when it goes beyond the human to serve communities, ecologies, and futures that don't yet have a voice.
+    </p>
+    <div class="hero-tags">
+      <span class="tag">Healthcare Design</span>
+      <span class="tag">HCI &amp; BCIs</span>
+      <span class="tag">XR &amp; AI in Design</span>
+      <span class="tag">Frugal Innovation</span>
+      <span class="tag">Design for Global Health</span>
+      <span class="tag">Behavioral Design</span>
+      <span class="tag">Design Education</span>
+    </div>
+  </div>
+
+  <div class="hero-photo">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+      <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+    </svg>
+    <span>Your photo here</span>
+  </div>
+</section>
+
+<!-- ABOUT / PHILOSOPHY -->
+<section id="about">
+  <div class="inner">
+    <p class="section-label">About &amp; Philosophy</p>
+    <h2 class="sketch-in">Design as a moral act
+      <svg class="sketch-underline" viewBox="0 0 500 10" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M2,6 C60,2 120,9 200,5 C280,1 360,8 498,5"/>
+      </svg>
+    </h2>
+    <p style="color: var(--mid); font-size:0.92rem; max-width:560px; line-height:1.8;">
+      My work begins with empathy and ends with action. Trained as an architect and a designer, shaped by India's healthcare inequities and sharpened by time at UC Berkeley and IIT Kanpur, I believe that the best design is invisible — it simply makes life more dignified. I am a Fulbright-Nehru Fellow, Prime Minister Research Fellow, and FARE Fellow. Currently, I serve as Assistant Professor at IIT Hyderabad and hold a visiting collaboration with Imperial College London.
+    </p>
+
+    <div class="philosophy-grid">
+      <div class="phil-card">
+        <p class="label">Research Philosophy</p>
+        <p>Knowledge should travel from the field to the clinic to the classroom and back. I work with communities first, and publish second — privileging the problem over the paper.</p>
+      </div>
+      <div class="phil-card">
+        <p class="label">Teaching Philosophy</p>
+        <p>Design is learned by doing, unlearned by observing, and mastered by failing gracefully. I create studio environments where students encounter real constraints and real people.</p>
+      </div>
+      <div class="phil-card">
+        <p class="label">Design Philosophy</p>
+        <p>More-than-human centered design. Technology should be frugal, contextual, and kind — especially when it enters spaces as intimate as health and care.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="inner">
+    <p class="section-label">Research</p>
+    <h2 class="sketch-in">Active threads
+      <svg class="sketch-underline" viewBox="0 0 500 10" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M2,7 C80,3 160,8 260,4 C340,1 420,7 498,5"/>
+      </svg>
+    </h2>
+
+    <div class="research-grid">
+      <div class="research-card">
+        <div class="num">01</div>
+        <h3>Mobile Primary Healthcare</h3>
+        <p>Designing deployable, frugal mobile Primary Health Centers (mPHC) for low-resource settings in rural India. From origami-inspired structures to interior ergonomics and wayfinding.</p>
+      </div>
+      <div class="research-card">
+        <div class="num">02</div>
+        <h3>XR in Healthcare Education</h3>
+        <p>Developing augmented and virtual reality frameworks for authentic clinical education. Currently piloting with CVD-Diabetes patients in the UK with Loughborough University.</p>
+      </div>
+      <div class="research-card">
+        <div class="num">03</div>
+        <h3>Brain–Computer Interfaces</h3>
+        <p>Exploring non-invasive BCIs as interaction channels for assistive and rehabilitative design — where neuroscience meets industrial design.</p>
+      </div>
+      <div class="research-card">
+        <div class="num">04</div>
+        <h3>Behavioral &amp; Critical Design</h3>
+        <p>Applying behavioral science to the design of health systems, community health workers' tools (ASHA bags, frontline kits), and stress-reduction products.</p>
+      </div>
+      <div class="research-card">
+        <div class="num">05</div>
+        <h3>Medical Device Innovation</h3>
+        <p>Awarded PMECRG grant (₹70L) by ANRF, DST for a new medical device project. Working at the intersection of engineering design and clinical validation.</p>
+      </div>
+      <div class="research-card">
+        <div class="num">06</div>
+        <h3>Frugal &amp; Social Innovation</h3>
+        <p>Learning from grassroots jugaad and Mohalla Clinics to inform scalable, equitable health infrastructure models for the Global South.</p>
+      </div>
+    </div>
+
+    <!-- New Ideas -->
+    <p class="section-label" style="margin-top:1rem;">New ideas I'm exploring</p>
+    <h2 class="sketch-in" style="margin-bottom:1.4rem;">On the horizon
+      <svg class="sketch-underline" viewBox="0 0 500 10" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M2,6 C100,2 200,9 300,5 C380,2 450,7 498,5"/>
+      </svg>
+    </h2>
+    <div class="ideas-list">
+      <div class="idea-item">
+        <div class="idea-dot"></div>
+        <div>
+          <h3>Biometric-Driven Adaptive Learning Environments</h3>
+          <p>Can real-time physiological signals reshape how a simulation responds to a learner? Exploring adaptive XR spaces that shift difficulty, pacing, and content based on stress and attention markers.</p>
+        </div>
+      </div>
+      <div class="idea-item">
+        <div class="idea-dot"></div>
+        <div>
+          <h3>Beyond Technological Solutionism in Health Design</h3>
+          <p>A critical design lens on when XR and AI actually help patients — and when they add friction. Presented at CHI '25 Yokohama; developing into a fuller research program.</p>
+        </div>
+      </div>
+      <div class="idea-item">
+        <div class="idea-dot"></div>
+        <div>
+          <h3>Deployable Architecture for Emergency Health Response</h3>
+          <p>Post-disaster, post-pandemic, and climate-vulnerable communities need health facilities that can be carried, assembled, and trusted. Connecting origami, material science, and health policy.</p>
+        </div>
+      </div>
+      <div class="idea-item">
+        <div class="idea-dot"></div>
+        <div>
+          <h3>Design Canvases as Decision Tools</h3>
+          <p>Translating participatory design methods into lightweight visual canvases that non-designers (clinicians, policymakers, frontline workers) can use independently in the field.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="inner">
+    <p class="section-label">Publications</p>
+    <h2 class="sketch-in">Selected works
+      <svg class="sketch-underline" viewBox="0 0 500 10" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M2,5 C70,9 150,2 240,6 C320,9 400,3 498,6"/>
+      </svg>
+    </h2>
+
+    <div class="pub-list">
+      <div class="pub-item">
+        <p class="pub-venue">Health Care Science · 2024</p>
+        <h3>Learning from socially driven frugal innovation to design the future of healthcare: a case of mobile primary health center</h3>
+        <p class="pub-meta">Akhtar, M.H., Ramkumar, J.</p>
+        <a href="https://doi.org/10.1002/hcs2.80" target="_blank">doi:10.1002/hcs2.80 ↗</a>
+      </div>
+
+      <div class="pub-item">
+        <p class="pub-venue">Design for Health · 2023</p>
+        <h3>Does rural India need a new primary healthcare delivery model?</h3>
+        <p class="pub-meta">Akhtar, M.H., Ramkumar, J. · Vol. 8(1), 93–112</p>
+        <a href="https://doi.org/10.1080/24735132.2023.2296732" target="_blank">doi:10.1080/24735132.2023.2296732 ↗</a>
+      </div>
+
+      <div class="pub-item">
+        <p class="pub-venue">Design for Health · 2023</p>
+        <h3>A design-led PhD endeavour through Covid: be empathetic to be creative — See. Feel. Act!</h3>
+        <p class="pub-meta">Akhtar, M.H., Ramkumar, J. · Vol. 7(3), 383–397</p>
+        <a href="https://doi.org/10.1080/24735132.2023.2266940" target="_blank">doi:10.1080/24735132.2023.2266940 ↗</a>
+      </div>
+
+      <div class="pub-item">
+        <p class="pub-venue">Discover Health Systems · 2023</p>
+        <h3>Primary Health Center: Discoverability in Health Systems</h3>
+        <p class="pub-meta">Akhtar, M.H., Ramkumar, J.</p>
+        <a href="https://doi.org/10.1007/s44250-023-00017-x" target="_blank">doi:10.1007/s44250-023-00017-x ↗</a>
+      </div>
+
+      <div class="pub-item">
+        <p class="pub-venue">CHI '25 Workshop · Yokohama, Japan</p>
+        <h3>Beyond Technological Solutionism: Rethinking XR in Healthcare</h3>
+        <p class="pub-meta">Akhtar, M.H., Landa-Avila, C., Desai, S., Warden, C., Morris, A. et al.</p>
+        <a href="https://doi.org/10.5281/zenodo.15203352" target="_blank">doi:10.5281/zenodo.15203352 ↗</a>
+      </div>
+
+      <div class="pub-item">
+        <p class="pub-venue">ASCILITE 2024 · Melbourne</p>
+        <h3>Designing Immersive Reality Environments in Healthcare Education: A Proposed Research Framework</h3>
+        <p class="pub-meta">Akhtar, M.H., Cochrane, T., Anderson, M.</p>
+        <a href="https://doi.org/10.14742/apubs.2024.1393" target="_blank">doi:10.14742/apubs.2024.1393 ↗</a>
+      </div>
+
+      <p style="font-size:0.82rem; color:var(--light); margin-top:0.4rem;">
+        20+ publications across journals and conferences · 4 patents granted · 4 patents pending
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- TEACHING -->
+<section id="teaching">
+  <div class="inner">
+    <p class="section-label">Teaching</p>
+    <h2 class="sketch-in">In the studio
+      <svg class="sketch-underline" viewBox="0 0 500 10" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M2,6 C90,2 180,9 270,4 C360,0 430,7 498,5"/>
+      </svg>
+    </h2>
+
+    <div class="teaching-grid">
+      <div class="teach-card">
+        <p class="school">IIT Hyderabad · 2025–present</p>
+        <h3>Assistant Professor, Department of Design</h3>
+        <p>Studio courses, design theory, and research methods in the undergraduate and postgraduate design programs.</p>
+      </div>
+      <div class="teach-card">
+        <p class="school">UC Berkeley · 2023–24</p>
+        <h3>Architectural Design Studio</h3>
+        <p>Taught final-year B.Arch. students and M.Arch. dissertation studio with Mark T. Anderson. Advised the Deployables Club — a star shade deployable system for space.</p>
+      </div>
+      <div class="teach-card">
+        <p class="school">IIT Kanpur · 2020–24</p>
+        <h3>Design Practice I &amp; Thesis Supervision</h3>
+        <p>Co-taught Design Practice I with Prof. J. Ramkumar. Co-supervised 8 M.Des. theses resulting in 3 copyrights and 2 patents.</p>
+      </div>
+      <div class="teach-card">
+        <p class="school">NIFT Hyderabad · 2020–23</p>
+        <h3>Foundation &amp; Specialization Courses</h3>
+        <p>Geometry I &amp; II, Materials for Designers, Design Fundamentals, Creative Thinking Skills, Technical Drawing, Portfolio Presentation.</p>
+      </div>
+    </div>
+
+    <!-- Student Thesis Projects -->
+    <p class="section-label" style="margin-top:1.5rem;">Student thesis projects</p>
+    <p style="font-size:0.85rem; color:var(--mid); margin-bottom:1.2rem;">
+      Open-Interact-Birth · ASHA Bag for frontline workers · Stress-free games · Patient health record systems · Pressure ulcer mattress · Animal stretcher system · IIT Kanpur interactive souvenir
+    </p>
+
+    <!-- Student work image placeholders -->
+    <div class="work-strip">
+      <div class="work-placeholder">Student work<br/>image</div>
+      <div class="work-placeholder">Student work<br/>image</div>
+      <div class="work-placeholder">Student work<br/>image</div>
+      <div class="work-placeholder">Student work<br/>image</div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="inner">
+    <p class="section-label">Education</p>
+    <h2 class="sketch-in">Formation
+      <svg class="sketch-underline" viewBox="0 0 500 10" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M2,7 C60,3 130,8 220,5 C310,2 400,8 498,4"/>
+      </svg>
+    </h2>
+
+    <div class="edu-list">
+      <div class="edu-item">
+        <span class="edu-year">2020–2024</span>
+        <div>
+          <h3>Ph.D. – M.Des., Industrial Design</h3>
+          <p>IIT Kanpur &nbsp;·&nbsp; CGPA 9.75</p>
+          <span class="badge">Prime Minister Research Fellow</span>
+          <span class="badge">Fulbright-Nehru Fellow @ UC Berkeley 2023–24</span>
+        </div>
+      </div>
+      <div class="edu-item">
+        <span class="edu-year">2015–2020</span>
+        <div>
+          <h3>B.Arch., Human Centered Design</h3>
+          <p>NIT Trichy &nbsp;·&nbsp; CGPA 9.49</p>
+          <span class="badge">Gold Medalist · First Rank</span>
+        </div>
+      </div>
+      <div class="edu-item">
+        <span class="edu-year">2011–2013</span>
+        <div>
+          <h3>Senior Secondary</h3>
+          <p>State Board &nbsp;·&nbsp; 79%</p>
+          <span class="badge">University Gold Medalist</span>
+        </div>
+      </div>
+      <div class="edu-item">
+        <span class="edu-year">2010–2011</span>
+        <div>
+          <h3>Secondary</h3>
+          <p>CBSE &nbsp;·&nbsp; CGPA 10</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grants strip -->
+    <p class="section-label" style="margin-top:2.5rem;">Grants &amp; fellowships</p>
+    <div class="philosophy-grid" style="margin-top:0.8rem;">
+      <div class="phil-card">
+        <p class="label">PMECRG Grant · 2025–26</p>
+        <p>₹70 Lakh (~$76k USD) from ANRF, Dept. of Science &amp; Technology, GoI — Medical Device Innovation.</p>
+      </div>
+      <div class="phil-card">
+        <p class="label">Imperial-India Connect Fund · 2025–26</p>
+        <p>Grantee at Imperial College London for collaborative design research.</p>
+      </div>
+      <div class="phil-card">
+        <p class="label">BIRAC BIG Grant · 2022–23</p>
+        <p>₹50 Lakh (~$60k USD) from BIRAC, Dept. of Science &amp; Technology, GoI.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="inner">
+    <div class="contact-text">
+      <p class="section-label">Contact</p>
+      <h2 class="sketch-in">Get in touch
+        <svg class="sketch-underline" viewBox="0 0 500 10" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M2,5 C80,9 160,2 250,6 C330,9 420,3 498,5"/>
+        </svg>
+      </h2>
+      <p>I welcome conversations about design research collaborations, student projects, speaking invitations, and partnerships around healthcare and education design.</p>
+      <p class="contact-line">📍 Department of Design, IIT Hyderabad</p>
+      <p class="contact-line">✉ <a href="mailto:haseen@des.iith.ac.in">haseen@des.iith.ac.in</a></p>
+      <p class="contact-line">✉ <a href="mailto:mohammad.haseenakhtar@fulbrightmail.org">mohammad.haseenakhtar@fulbrightmail.org</a></p>
+      <p class="contact-line">📞 <a href="tel:+916200851939">+91 620 085 1939</a></p>
+      <p class="contact-line" style="margin-top:0.8rem;">
+        <a href="https://design.iith.ac.in/iitdesign_peoples/dr-md-haseen-akhtar/" target="_blank">IIT Hyderabad profile ↗</a>
+      </p>
+    </div>
+
+    <div class="contact-photo">
+      <span>Your work or<br/>location image here</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Md Haseen Akhtar · IIT Hyderabad</p>
+  <ul class="footer-links">
+    <li><a href="https://design.iith.ac.in/iitdesign_peoples/dr-md-haseen-akhtar/" target="_blank">IIT Profile</a></li>
+    <li><a href="mailto:haseen@des.iith.ac.in">Email</a></li>
+  </ul>
+</footer>
+
+<script>
+  // Observe headings and cards, trigger animations on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        el.classList.add('visible');
+
+        // Also trigger the sketch underline inside a heading
+        const underline = el.querySelector('.sketch-underline');
+        if (underline) {
+          // Small delay so heading slides in first
+          setTimeout(() => underline.classList.add('drawn'), 350);
+        }
+
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  // Headings
+  document.querySelectorAll('h2.sketch-in').forEach(el => io.observe(el));
+
+  // Cards — stagger siblings
+  const cardSelectors = [
+    '.research-card', '.phil-card', '.teach-card',
+    '.pub-item', '.idea-item', '.edu-item'
+  ];
+  cardSelectors.forEach(sel => {
+    document.querySelectorAll(sel).forEach((el, i) => {
+      el.style.transitionDelay = `${i * 0.07}s`;
+      io.observe(el);
+    });
+  });
+</script>
+</body>
+</html>
