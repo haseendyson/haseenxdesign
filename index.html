@@ -1,2840 +1,892 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Md Haseen Akhtar | Human-Centered AI | IIT Hyderabad</title>
-
-<meta name="description"
-content="Official academic website of Dr. Md Haseen Akhtar, Assistant Professor, Department of Design, IIT Hyderabad. Research in Human-Centered AI, Healthcare Design, HCI, XR, Medical Device Innovation and Design Research.">
+<title>Md Haseen Akhtar · Department of Design, IIT Hyderabad</title>
+<meta name="description" content="Md Haseen Akhtar — Assistant Professor, Department of Design, IIT Hyderabad. Research on Human-Centered AI, Healthcare Infrastructure Design, and HCI.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
 
-/**************************************************
-
-DESIGN SYSTEM
-
-**************************************************/
-
+/* ======================================================
+   DESIGN TOKENS
+====================================================== */
 :root{
-
---cardinal:#8C1515;
---cardinal-dark:#6E1010;
-
---text:#1A1A1A;
---muted:#676767;
-
---paper:#FCFBF8;
---stone:#F3F1EC;
-
---line:#E6E2D8;
-
---shadow:0 10px 35px rgba(0,0,0,.08);
-
---radius:10px;
-
---serif:"Source Serif 4",serif;
---sans:"Inter",sans-serif;
---mono:"IBM Plex Mono",monospace;
-
+  --cardinal:#8C1515;
+  --cardinal-dark:#6B0F0F;
+  --ink:#1A1815;
+  --muted:#6B665C;
+  --paper:#FDFCFA;
+  --stone:#F5F2EA;
+  --line:#E4E0D3;
+  --serif:"Source Serif 4", Georgia, serif;
+  --sans:"Inter", -apple-system, sans-serif;
+  --mono:"IBM Plex Mono", monospace;
 }
 
-/**************************************************/
-
-*{
-
-margin:0;
-padding:0;
-box-sizing:border-box;
-
-}
-
-html{
-
-scroll-behavior:smooth;
-
-}
-
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
 body{
+  font-family:var(--sans);
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 40px;}
 
-background:var(--paper);
-
-font-family:var(--sans);
-
-color:var(--text);
-
-line-height:1.7;
-
--webkit-font-smoothing:antialiased;
-
+.eyebrow{
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--cardinal);
+  font-weight:500;
 }
 
-img{
-
-display:block;
-max-width:100%;
-
+h1,h2,h3,h4{
+  font-family:var(--serif);
+  font-weight:600;
+  line-height:1.15;
+  color:var(--ink);
 }
 
-a{
+.section-head{max-width:660px;margin-bottom:56px;}
+.section-head h2{font-size:clamp(30px,4vw,42px);margin-top:10px;}
+.section-head p{color:var(--muted);font-size:17px;margin-top:16px;}
 
-text-decoration:none;
-color:inherit;
-
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-family:var(--mono);
+  font-size:13px;
+  letter-spacing:.04em;
+  text-decoration:none;
+  padding:13px 26px;
+  border-radius:2px;
+  transition:.25s;
 }
+.btn-primary{background:var(--cardinal);color:#fff;}
+.btn-primary:hover{background:var(--cardinal-dark);}
+.btn-outline{border:1px solid var(--ink);color:var(--ink);}
+.btn-outline:hover{background:var(--ink);color:#fff;}
 
-.container{
+section{padding:110px 0;}
+.section-alt{background:var(--stone);}
 
-width:min(1320px,92%);
-margin:auto;
-
-}
-
-/**************************************************
-
-HEADER
-
-**************************************************/
-
+/* ======================================================
+   HEADER / NAV
+====================================================== */
 header{
-
-position:fixed;
-
-top:0;
-
-left:0;
-
-right:0;
-
-height:90px;
-
-display:flex;
-
-align-items:center;
-
-background:rgba(252,251,248,.92);
-
-backdrop-filter:blur(14px);
-
-border-bottom:1px solid var(--line);
-
-z-index:999;
-
-transition:.35s;
-
+  position:sticky;top:0;z-index:900;
+  background:rgba(253,252,250,.92);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+  height:88px;
+  display:flex;align-items:center;
+  transition:.3s;
 }
+.header-inner{width:100%;display:flex;align-items:center;justify-content:space-between;}
+.brand{display:flex;flex-direction:column;text-decoration:none;line-height:1.1;}
+.brand strong{font-family:var(--serif);font-size:19px;font-weight:600;color:var(--ink);}
+.brand span{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--cardinal);text-transform:uppercase;margin-top:3px;}
 
-.header-inner{
+nav{display:flex;gap:32px;}
+nav a{font-size:14px;font-weight:500;text-decoration:none;color:var(--ink);position:relative;padding-bottom:4px;}
+nav a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--cardinal);transition:.25s;}
+nav a:hover::after{width:100%;}
+nav a.active{color:var(--cardinal);}
+nav a.active::after{width:100%;}
 
-display:flex;
+/* ======================================================
+   HERO
+====================================================== */
+.hero{padding:150px 0 100px;display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;}
+.hero h1{font-size:clamp(38px,5.2vw,58px);margin-top:16px;}
+.hero .accent{color:var(--cardinal);font-style:italic;}
+.hero p{color:var(--muted);font-size:18px;max-width:540px;margin-top:22px;}
+.hero-actions{display:flex;gap:16px;margin-top:34px;flex-wrap:wrap;}
 
-justify-content:space-between;
-
-align-items:center;
-
-width:100%;
-
+.hero-portrait{
+  position:relative;aspect-ratio:4/5;
+  background:linear-gradient(155deg,var(--cardinal) 0%,#4a0d0d 100%);
+  border-radius:2px;overflow:hidden;
+  display:flex;align-items:flex-end;padding:26px;
 }
-
-.logo{
-
-display:flex;
-
-flex-direction:column;
-
+.hero-portrait::before{
+  content:"MHA";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  font-family:var(--serif);font-size:110px;color:rgba(255,255,255,.08);font-weight:700;
 }
+.hero-portrait .cap{position:relative;color:#fff;font-family:var(--mono);font-size:12px;letter-spacing:.05em;line-height:1.7;}
 
-.logo h2{
+/* ======================================================
+   STATS BAR
+====================================================== */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.stat{padding:44px 40px;border-right:1px solid var(--line);}
+.stat:last-child{border-right:none;}
+.stat h2{font-size:40px;color:var(--cardinal);}
+.stat p{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:8px;}
 
-font-family:var(--serif);
-
-font-size:24px;
-
-font-weight:600;
-
+/* ======================================================
+   NUMBERED SECTION HEADS
+====================================================== */
+.numbered-head{display:flex;gap:24px;align-items:baseline;margin-bottom:56px;}
+.numbered-head .num{
+  font-family:var(--serif);font-size:20px;color:var(--cardinal);
+  border:1px solid var(--cardinal);border-radius:50%;width:44px;height:44px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
 }
-
-.logo span{
-
-font-family:var(--mono);
-
-font-size:12px;
-
-color:var(--cardinal);
-
-text-transform:uppercase;
-
-letter-spacing:.08em;
-
-margin-top:2px;
-
-}
-
-nav{
-
-display:flex;
-
-gap:34px;
-
-}
-
-nav a{
-
-font-size:15px;
-
-font-weight:500;
-
-position:relative;
-
-padding-bottom:5px;
-
-}
-
-nav a::after{
-
-content:"";
-
-position:absolute;
-
-bottom:0;
-
-left:0;
-
-height:2px;
-
-width:0;
-
-background:var(--cardinal);
-
-transition:.3s;
-
-}
-
-nav a:hover::after{
-
-width:100%;
-
-}
-
-/**************************************************
-
-HERO
-
-**************************************************/
-
-.hero{
-
-padding-top:170px;
-
-padding-bottom:120px;
-
-display:grid;
-
-grid-template-columns:1.15fr .85fr;
-
-gap:70px;
-
-align-items:center;
-
-}
-
-.hero small{
-
-font-family:var(--mono);
-
-text-transform:uppercase;
-
-color:var(--cardinal);
-
-letter-spacing:.12em;
-
-font-size:12px;
-
-}
-
-.hero h1{
-
-font-family:var(--serif);
-
-font-size:68px;
-
-line-height:1.05;
-
-margin-top:20px;
-
-font-weight:600;
-
-}
-
-.hero h1 span{
-
-font-style:italic;
-
-color:var(--cardinal);
-
-}
-
-.hero p{
-
-font-size:19px;
-
-color:var(--muted);
-
-margin-top:30px;
-
-max-width:720px;
-
-}
-
-.hero-buttons{
-
-display:flex;
-
-gap:18px;
-
-margin-top:40px;
-
-flex-wrap:wrap;
-
-}
-
-.button{
-
-padding:15px 32px;
-
-border-radius:6px;
-
-font-weight:600;
-
-transition:.3s;
-
-}
-
-.primary{
-
-background:var(--cardinal);
-
-color:white;
-
-}
-
-.primary:hover{
-
-background:var(--cardinal-dark);
-
-}
-
-.secondary{
-
-border:1px solid var(--text);
-
-}
-
-.secondary:hover{
-
-background:var(--text);
-
-color:white;
-
-}
-
-/**************************************************
-
-PORTRAIT
-
-**************************************************/
-
-.hero-image{
-
-height:640px;
-
-border-radius:12px;
-
-background:#ece7dc;
-
-border:2px dashed #bcb4a6;
-
-display:flex;
-
-flex-direction:column;
-
-align-items:center;
-
-justify-content:center;
-
-box-shadow:var(--shadow);
-
-}
-
-.hero-image svg{
-
-width:90px;
-
-height:90px;
-
-stroke:#8C1515;
-
-margin-bottom:20px;
-
-}
-
-.hero-image h3{
-
-font-family:var(--serif);
-
-font-size:28px;
-
-}
-
-.hero-image p{
-
-font-family:var(--mono);
-
-font-size:13px;
-
-margin-top:10px;
-
-color:var(--muted);
-
-}
-
-/**************************************************
-
-STATISTICS
-
-**************************************************/
-
-.stats{
-
-display:grid;
-
-grid-template-columns:repeat(4,1fr);
-
-gap:25px;
-
-margin-top:40px;
-
-}
-
-.stat{
-
-background:white;
-
-padding:35px;
-
-border-radius:8px;
-
-border:1px solid var(--line);
-
-text-align:center;
-
-}
-
-.stat h2{
-
-font-family:var(--serif);
-
-font-size:52px;
-
-color:var(--cardinal);
-
-}
-
-.stat p{
-
-margin-top:8px;
-
-font-size:13px;
-
-font-family:var(--mono);
-
-letter-spacing:.08em;
-
-text-transform:uppercase;
-
-color:var(--muted);
-
-}
-
-/**************************************************
-
-SECTION
-
-**************************************************/
-
-section{
-
-padding:120px 0;
-
-}
-
-.section-title{
-
-margin-bottom:70px;
-
-max-width:760px;
-
-}
-
-.section-title small{
-
-font-family:var(--mono);
-
-text-transform:uppercase;
-
-color:var(--cardinal);
-
-letter-spacing:.1em;
-
-font-size:12px;
-
-}
-
-.section-title h2{
-
-font-family:var(--serif);
-
-font-size:52px;
-
-margin-top:15px;
-
-}
-
-.section-title p{
-
-margin-top:20px;
-
-font-size:18px;
-
-color:var(--muted);
-
-}
-
-/**************************************************
-
-RESEARCH GRID
-
-**************************************************/
-
-.research-grid{
-
-display:grid;
-
-grid-template-columns:repeat(3,1fr);
-
-gap:35px;
-
-}
-
-.research-card{
-
-background:white;
-
-border-radius:10px;
-
-overflow:hidden;
-
-border:1px solid var(--line);
-
-transition:.3s;
-
-}
-
-.research-card:hover{
-
-transform:translateY(-8px);
-
-box-shadow:var(--shadow);
-
-}
-
-.research-placeholder{
-
-height:220px;
-
-background:#efebe4;
-
-border-bottom:1px solid var(--line);
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-font-family:var(--mono);
-
-color:#777;
-
-text-transform:uppercase;
-
-letter-spacing:.1em;
-
-font-size:13px;
-
-}
-
-.research-content{
-
-padding:30px;
-
-}
-
-.research-content small{
-
-font-family:var(--mono);
-
-color:var(--cardinal);
-
-letter-spacing:.08em;
-
-text-transform:uppercase;
-
-font-size:11px;
-
-}
-
-.research-content h3{
-
-font-family:var(--serif);
-
-font-size:28px;
-
-margin-top:12px;
-
-}
-
-.research-content p{
-
-margin-top:15px;
-
-color:var(--muted);
-
-font-size:16px;
-
-}
-
-   /**************************************************
-
-PROJECTS
-
-**************************************************/
-
-.projects{
-
-display:grid;
-
-grid-template-columns:repeat(2,1fr);
-
-gap:40px;
-
-}
-
-.project-card{
-
-background:#fff;
-
-border:1px solid var(--line);
-
-border-radius:10px;
-
-overflow:hidden;
-
-transition:.35s;
-
-}
-
-.project-card:hover{
-
-transform:translateY(-8px);
-
-box-shadow:var(--shadow);
-
-}
-
+.numbered-head h2{font-size:clamp(28px,3.6vw,38px);}
+.numbered-head p{color:var(--muted);margin-top:8px;max-width:600px;}
+
+/* ======================================================
+   RESEARCH CARDS
+====================================================== */
+.research-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+.research-card{background:var(--paper);padding:38px 32px;}
+.research-card .tag{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--cardinal);}
+.research-card h3{font-size:20px;margin-top:14px;}
+.research-card p{color:var(--muted);font-size:15px;margin-top:12px;}
+
+/* ======================================================
+   PULL QUOTE
+====================================================== */
+.quote-band{background:var(--cardinal);color:#fff;padding:100px 0;}
+.quote-band blockquote{font-family:var(--serif);font-size:clamp(24px,3.2vw,36px);font-weight:500;line-height:1.4;max-width:820px;}
+.quote-band blockquote::before{content:"\201C";}
+.quote-band blockquote::after{content:"\201D";}
+.quote-band cite{display:block;font-family:var(--mono);font-style:normal;font-size:13px;letter-spacing:.06em;text-transform:uppercase;opacity:.8;margin-top:28px;}
+
+/* ======================================================
+   PROJECTS
+====================================================== */
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;}
+.project-card{border:1px solid var(--line);background:var(--paper);}
 .project-image{
+  height:190px;
+  background:repeating-linear-gradient(135deg,var(--stone) 0 18px,#eee9dc 18px 36px);
+  border-bottom:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
+  text-align:center;padding:20px;
+}
+.project-body{padding:28px 30px 32px;}
+.project-body .eyebrow{font-size:11px;}
+.project-body h3{font-size:21px;margin-top:10px;}
+.project-body p{color:var(--muted);font-size:15px;margin-top:12px;}
 
-height:280px;
+/* ======================================================
+   PUBLICATIONS
+====================================================== */
+.pub-list{border-top:1px solid var(--line);}
+.publication{display:grid;grid-template-columns:90px 1fr auto;gap:24px;align-items:start;padding:28px 0;border-bottom:1px solid var(--line);}
+.publication .year{font-family:var(--mono);font-size:14px;color:var(--cardinal);padding-top:2px;}
+.publication h3{font-size:18px;font-weight:600;font-family:var(--sans);}
+.publication .venue{color:var(--muted);font-size:14px;margin-top:6px;}
+.publication .authors{color:var(--muted);font-size:14px;margin-top:4px;font-style:italic;}
+.publication .links{display:flex;gap:16px;align-self:center;}
+.publication .links a{font-family:var(--mono);font-size:12px;text-decoration:none;color:var(--ink);border-bottom:1px solid var(--line);}
+.publication .links a:hover{color:var(--cardinal);border-color:var(--cardinal);}
+.pub-note{
+  margin-top:26px;color:var(--muted);font-size:14px;
+}
+.pub-note a{color:var(--cardinal);border-bottom:1px solid var(--cardinal);text-decoration:none;}
 
-background:#ece8df;
+/* ======================================================
+   AWARDS
+====================================================== */
+.award-list{display:flex;flex-direction:column;gap:0;}
+.award{display:flex;justify-content:space-between;gap:20px;padding:20px 0;border-bottom:1px solid var(--line);}
+.award h4{font-size:16px;font-family:var(--sans);font-weight:600;}
+.award p{color:var(--muted);font-size:14px;margin-top:4px;}
+.award .year{font-family:var(--mono);font-size:13px;color:var(--cardinal);white-space:nowrap;}
 
-border-bottom:1px solid var(--line);
+/* ======================================================
+   TEACHING
+====================================================== */
+.course-list{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+.course{border:1px solid var(--line);padding:26px 28px;background:var(--paper);}
+.course .code{font-family:var(--mono);font-size:12px;color:var(--cardinal);}
+.course h3{font-size:18px;margin-top:10px;}
+.course p{color:var(--muted);font-size:14px;margin-top:10px;}
+.course .term{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:14px;display:block;}
 
-display:flex;
+/* ======================================================
+   MENTORING
+====================================================== */
+.mentor-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+.mentor-card{border-left:2px solid var(--cardinal);padding-left:22px;}
+.mentor-card h4{font-size:16px;font-family:var(--sans);font-weight:600;}
+.mentor-card p{color:var(--muted);font-size:14px;margin-top:8px;line-height:1.6;}
 
-align-items:center;
+/* ======================================================
+   NEWS / TIMELINE
+====================================================== */
+.news-list{border-top:1px solid var(--line);}
+.news-card{display:grid;grid-template-columns:120px 1fr;gap:28px;padding:26px 0;border-bottom:1px solid var(--line);}
+.news-card .date{font-family:var(--mono);font-size:12px;color:var(--cardinal);padding-top:3px;}
+.news-card h3{font-size:17px;font-family:var(--sans);font-weight:600;}
+.news-card p{color:var(--muted);font-size:14px;margin-top:8px;}
 
-justify-content:center;
-
-font-family:var(--mono);
-
-font-size:13px;
-
-letter-spacing:.08em;
-
-text-transform:uppercase;
-
-color:#777;
-
+/* ======================================================
+   SKILLS
+====================================================== */
+.skills-wrap{display:flex;flex-wrap:wrap;gap:12px;}
+.skill-tag{
+  font-family:var(--mono);font-size:12px;letter-spacing:.02em;
+  border:1px solid var(--line);padding:9px 16px;color:var(--ink);background:var(--paper);
 }
 
-.project-body{
-
-padding:34px;
-
+.membership-strip{
+  display:flex;flex-wrap:wrap;gap:10px 28px;
+  margin-top:16px;
 }
-
-.project-body small{
-
-font-family:var(--mono);
-
-font-size:11px;
-
-letter-spacing:.08em;
-
-text-transform:uppercase;
-
-color:var(--cardinal);
-
+.membership-strip span{
+  font-family:var(--mono);font-size:12px;color:var(--muted);
 }
+.membership-strip span::before{content:"— ";color:var(--cardinal);}
 
-.project-body h3{
+/* ======================================================
+   CONTACT
+====================================================== */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;}
+.contact-info dt{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--cardinal);margin-top:26px;}
+.contact-info dt:first-child{margin-top:0;}
+.contact-info dd{font-size:16px;margin-top:6px;}
+.contact-info dd a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);}
+.contact-info dd a:hover{color:var(--cardinal);border-color:var(--cardinal);}
 
-font-family:var(--serif);
-
-font-size:32px;
-
-margin-top:12px;
-
+.contact-form{display:flex;flex-direction:column;gap:16px;}
+.contact-form input,.contact-form textarea{
+  border:1px solid var(--line);background:var(--paper);padding:14px 16px;
+  font-family:var(--sans);font-size:15px;color:var(--ink);
 }
+.contact-form textarea{resize:vertical;min-height:120px;}
+.contact-form input:focus,.contact-form textarea:focus{outline:2px solid var(--cardinal);outline-offset:1px;}
+.contact-form button{align-self:flex-start;border:none;cursor:pointer;}
 
-.project-body p{
+/* ======================================================
+   FOOTER
+====================================================== */
+footer{border-top:1px solid var(--line);padding:50px 0;}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+footer .brand strong{font-size:16px;}
+.footer-links{display:flex;gap:26px;flex-wrap:wrap;}
+.footer-links a{font-family:var(--mono);font-size:12px;text-decoration:none;color:var(--muted);}
+.footer-links a:hover{color:var(--cardinal);}
 
-margin-top:18px;
+/* ======================================================
+   SCROLL ANIMATION / SCROLL BUTTON / MOBILE MENU
+====================================================== */
+.fade-up{opacity:0;transform:translateY(50px);transition:all .8s ease;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
 
-color:var(--muted);
-
-font-size:16px;
-
-line-height:1.8;
-
+#scrollTop{
+  position:fixed;right:35px;bottom:35px;width:56px;height:56px;border:none;border-radius:50%;
+  background:var(--cardinal);color:white;font-size:22px;cursor:pointer;opacity:0;visibility:hidden;transition:.3s;z-index:999;
 }
+#scrollTop.show{opacity:1;visibility:visible;}
+#scrollTop:hover{background:var(--cardinal-dark);}
 
-/**************************************************
-
-PUBLICATIONS
-
-**************************************************/
-
-.publications{
-
-display:flex;
-
-flex-direction:column;
-
-gap:40px;
-
+#menuButton{
+  display:none;position:fixed;right:25px;top:22px;width:44px;height:44px;border:1px solid var(--line);
+  background:white;border-radius:4px;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.08);z-index:1001;
 }
+#menuButton span{display:block;height:2px;margin:7px 10px;background:var(--ink);transition:.35s;}
+#menuButton.active span:nth-child(1){transform:translateY(9px) rotate(45deg);}
+#menuButton.active span:nth-child(2){opacity:0;}
+#menuButton.active span:nth-child(3){transform:translateY(-9px) rotate(-45deg);}
 
-.paper{
-
-display:grid;
-
-grid-template-columns:260px 1fr;
-
-gap:40px;
-
-background:#fff;
-
-border-radius:10px;
-
-border:1px solid var(--line);
-
-overflow:hidden;
-
-transition:.3s;
-
+#mobileMenu{
+  position:fixed;top:0;right:-100%;width:300px;height:100vh;background:var(--paper);
+  padding:120px 40px;display:flex;flex-direction:column;gap:25px;transition:.4s;
+  box-shadow:-15px 0 35px rgba(0,0,0,.08);z-index:1000;
 }
+#mobileMenu.open{right:0;}
+#mobileMenu a{text-decoration:none;font-size:22px;color:var(--ink);font-weight:600;font-family:var(--serif);}
 
-.paper:hover{
-
-box-shadow:var(--shadow);
-
+/* ======================================================
+   RESPONSIVE
+====================================================== */
+@media(max-width:980px){
+  .hero{grid-template-columns:1fr;}
+  .research-grid{grid-template-columns:repeat(2,1fr);}
+  .projects-grid,.contact-grid,.course-list{grid-template-columns:1fr;}
+  .mentor-grid{grid-template-columns:1fr;}
+  .stats{grid-template-columns:repeat(2,1fr);}
 }
-
-.paper-image{
-
-height:240px;
-
-background:#ece8df;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-font-family:var(--mono);
-
-font-size:13px;
-
-color:#777;
-
-text-transform:uppercase;
-
-letter-spacing:.08em;
-
-}
-
-.paper-body{
-
-padding:34px;
-
-}
-
-.paper-body .year{
-
-font-family:var(--mono);
-
-color:var(--cardinal);
-
-font-size:12px;
-
-letter-spacing:.08em;
-
-text-transform:uppercase;
-
-}
-
-.paper-body h3{
-
-font-family:var(--serif);
-
-font-size:30px;
-
-margin:14px 0;
-
-}
-
-.paper-body p{
-
-color:var(--muted);
-
-margin-bottom:15px;
-
-}
-
-.paper-links{
-
-display:flex;
-
-gap:18px;
-
-margin-top:20px;
-
-}
-
-.paper-links a{
-
-padding:10px 20px;
-
-border:1px solid var(--line);
-
-border-radius:6px;
-
-font-size:14px;
-
-transition:.3s;
-
-}
-
-.paper-links a:hover{
-
-background:var(--cardinal);
-
-color:#fff;
-
-}
-
-/**************************************************
-
-AWARDS
-
-**************************************************/
-
-.awards{
-
-display:grid;
-
-grid-template-columns:repeat(2,1fr);
-
-gap:35px;
-
-}
-
-.award{
-
-display:grid;
-
-grid-template-columns:120px 1fr;
-
-gap:25px;
-
-padding:30px;
-
-background:#fff;
-
-border-radius:10px;
-
-border:1px solid var(--line);
-
-}
-
-.award-logo{
-
-height:90px;
-
-background:#ece8df;
-
-border-radius:8px;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-font-family:var(--mono);
-
-font-size:11px;
-
-color:#777;
-
-text-transform:uppercase;
-
-}
-
-.award h3{
-
-font-family:var(--serif);
-
-font-size:24px;
-
-margin-bottom:10px;
-
-}
-
-.award p{
-
-color:var(--muted);
-
-}
-
-/**************************************************
-
-TIMELINE
-
-**************************************************/
-
-.timeline{
-
-position:relative;
-
-margin-left:30px;
-
-}
-
-.timeline::before{
-
-content:"";
-
-position:absolute;
-
-left:22px;
-
-top:0;
-
-bottom:0;
-
-width:2px;
-
-background:var(--line);
-
-}
-
-.event{
-
-position:relative;
-
-display:grid;
-
-grid-template-columns:70px 220px 1fr;
-
-gap:35px;
-
-margin-bottom:60px;
-
-}
-
-.event-dot{
-
-width:18px;
-
-height:18px;
-
-background:var(--cardinal);
-
-border-radius:50%;
-
-margin-top:12px;
-
-margin-left:14px;
-
-z-index:2;
-
-}
-
-.event-image{
-
-height:140px;
-
-background:#ece8df;
-
-border-radius:8px;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-font-family:var(--mono);
-
-font-size:12px;
-
-text-transform:uppercase;
-
-color:#777;
-
-}
-
-.event-content h3{
-
-font-family:var(--serif);
-
-font-size:28px;
-
-margin-bottom:10px;
-
-}
-
-.event-content span{
-
-font-family:var(--mono);
-
-font-size:12px;
-
-color:var(--cardinal);
-
-letter-spacing:.08em;
-
-text-transform:uppercase;
-
-}
-
-.event-content p{
-
-margin-top:15px;
-
-color:var(--muted);
-
-line-height:1.8;
-
-}
-
-/**************************************************
-
-CONTACT
-
-**************************************************/
-
-.contact{
-
-display:grid;
-
-grid-template-columns:1fr 1fr;
-
-gap:70px;
-
-}
-
-.contact-card{
-
-background:#fff;
-
-padding:40px;
-
-border:1px solid var(--line);
-
-border-radius:10px;
-
-}
-
-.contact-card h3{
-
-font-family:var(--serif);
-
-font-size:34px;
-
-margin-bottom:25px;
-
-}
-
-.contact-card p{
-
-margin-bottom:18px;
-
-color:var(--muted);
-
-}
-
-.contact-card input,
-
-.contact-card textarea{
-
-width:100%;
-
-padding:16px;
-
-margin-bottom:18px;
-
-border:1px solid var(--line);
-
-font-family:var(--sans);
-
-font-size:15px;
-
-background:#fff;
-
-}
-
-.contact-card textarea{
-
-height:180px;
-
-resize:vertical;
-
-}
-
-.contact-card button{
-
-padding:16px 32px;
-
-background:var(--cardinal);
-
-color:white;
-
-border:none;
-
-cursor:pointer;
-
-font-size:15px;
-
-border-radius:6px;
-
-}
-
-/**************************************************
-
-FOOTER
-
-**************************************************/
-
-footer{
-
-padding:70px 0;
-
-border-top:1px solid var(--line);
-
-margin-top:100px;
-
-}
-
-.footer{
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-flex-wrap:wrap;
-
-gap:20px;
-
-}
-
-.footer p{
-
-color:var(--muted);
-
-font-size:14px;
-
-}
-
-.footer-links{
-
-display:flex;
-
-gap:24px;
-
-}
-
-/**************************************************
-
-RESPONSIVE
-
-**************************************************/
-
-@media(max-width:1100px){
-
-.hero{
-
-grid-template-columns:1fr;
-
-}
-
-.stats{
-
-grid-template-columns:repeat(2,1fr);
-
-}
-
-.research-grid{
-
-grid-template-columns:repeat(2,1fr);
-
-}
-
-.projects{
-
-grid-template-columns:1fr;
-
-}
-
-.awards{
-
-grid-template-columns:1fr;
-
-}
-
-.paper{
-
-grid-template-columns:1fr;
-
-}
-
-.contact{
-
-grid-template-columns:1fr;
-
-}
-
-}
-
 @media(max-width:768px){
-
-nav{
-
-display:none;
-
+  .wrap{padding:0 24px;}
+  nav{display:none;}
+  #menuButton{display:block;}
+  section{padding:80px 0;}
+  .research-grid{grid-template-columns:1fr;}
+  .publication{grid-template-columns:1fr;gap:10px;}
+  .news-card{grid-template-columns:1fr;gap:8px;}
 }
-
-.hero h1{
-
-font-size:48px;
-
-}
-
-.section-title h2{
-
-font-size:38px;
-
-}
-
-.research-grid{
-
-grid-template-columns:1fr;
-
-}
-
-.stats{
-
-grid-template-columns:1fr;
-
-}
-
-.event{
-
-grid-template-columns:50px 1fr;
-
-}
-
-.event-image{
-
-display:none;
-
-}
-
+@media(prefers-reduced-motion:reduce){
+  *{transition:none !important;animation:none !important;}
+  .fade-up{opacity:1;transform:none;}
 }
 
 </style>
-
 </head>
-
 <body>
 
-   <!-- ================= HEADER ================= -->
-<body>
-
-<header class="site-header">
-    <div class="container header-container">
-
-        <div class="brand">
-            <a href="#home">
-                <span class="brand-name">Md Akhtar</span>
-                <span class="brand-title">
-                    Human-Centered AI Researcher
-                </span>
-            </a>
-        </div>
-
-        <button class="menu-toggle" aria-label="Toggle Menu">
-            ☰
-        </button>
-
-        <nav class="main-navigation">
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#research">Research</a></li>
-                <li><a href="#publications">Publications</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#teaching">Teaching</a></li>
-                <li><a href="#awards">Awards</a></li>
-                <li><a href="#cv">CV</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-
-    </div>
+<!-- ======================================================
+HEADER
+====================================================== -->
+<header>
+  <div class="wrap header-inner">
+    <a href="#" class="brand">
+      <strong>Md Haseen Akhtar</strong>
+      <span>Department of Design · IIT Hyderabad</span>
+    </a>
+    <nav>
+      <a href="#research">Research</a>
+      <a href="#projects">Projects</a>
+      <a href="#publications">Publications</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#news">Timeline</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
 </header>
 
+<button id="menuButton" aria-label="Open Navigation"><span></span><span></span><span></span></button>
 
-<!-- ================= HERO SECTION ================= -->
+<div id="mobileMenu">
+  <a href="#research">Research</a>
+  <a href="#projects">Projects</a>
+  <a href="#publications">Publications</a>
+  <a href="#teaching">Teaching</a>
+  <a href="#news">Timeline</a>
+  <a href="#contact">Contact</a>
+</div>
 
-<section id="home" class="hero-section">
-
-    <div class="container hero-grid">
-
-        <div class="hero-content">
-
-            <p class="hero-tag">
-                Human-Centered AI • Conversational Systems • Digital Health
-            </p>
-
-            <h1>
-                Designing AI Systems
-                <span>
-                    that Understand, Assist, and Empower Humans
-                </span>
-            </h1>
-
-            <p class="hero-description">
-                I am a researcher working at the intersection of
-                Human-Computer Interaction, Artificial Intelligence,
-                Extended Reality, and Healthcare. My work focuses on
-                creating adaptive AI companions and interactive systems
-                that enhance learning, wellbeing, and human decision-making.
-            </p>
-
-
-            <div class="hero-buttons">
-
-                <a href="#research" class="btn primary-btn">
-                    Explore Research
-                </a>
-
-                <a href="#cv" class="btn secondary-btn">
-                    View CV
-                </a>
-
-            </div>
-
-
-            <div class="social-links">
-
-                <a href="#" aria-label="Google Scholar">
-                    Google Scholar
-                </a>
-
-                <a href="#" aria-label="LinkedIn">
-                    LinkedIn
-                </a>
-
-                <a href="#" aria-label="ORCID">
-                    ORCID
-                </a>
-
-                <a href="#" aria-label="GitHub">
-                    GitHub
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <!-- Portrait Placeholder -->
-
-        <div class="portrait-wrapper">
-
-            <div class="portrait-frame">
-
-                <img 
-                    src="images/profile-placeholder.jpg"
-                    alt="Professional portrait placeholder"
-                >
-
-            </div>
-
-            <div class="portrait-caption">
-
-                <h3>
-                    Md Akhtar
-                </h3>
-
-                <p>
-                    Assistant Professor / Researcher
-                </p>
-
-                <p>
-                    Human-Centered AI & Interactive Systems
-                </p>
-
-            </div>
-
-        </div>
-
-
+<!-- ======================================================
+HERO
+====================================================== -->
+<section class="hero wrap">
+  <div class="fade-up">
+    <div class="eyebrow">Assistant Professor · Department of Design, IIT Hyderabad</div>
+    <h1>Designing <span class="accent">human-centered</span> systems for healthcare and AI.</h1>
+    <p>I work at the intersection of Human-Centered AI, Healthcare Infrastructure &amp; Services Design, and Human-Computer Interaction — building frugal, deployable solutions for low-resource settings and studying how people interact with emerging technologies.</p>
+    <div class="hero-actions">
+      <a href="https://scholar.google.com/citations?user=PtSUxU0AAAAJ&hl=en" class="btn btn-primary" target="_blank" rel="noopener">Google Scholar</a>
+      <a href="#contact" class="btn btn-outline">Get in Touch</a>
     </div>
-
+  </div>
+  <div class="hero-portrait fade-up">
+    <div class="cap">Department of Design<br>Indian Institute of Technology Hyderabad<br>Kandi, Sangareddy, Telangana</div>
+  </div>
 </section>
 
+<!-- ======================================================
+STATS
+====================================================== -->
+<div class="stats wrap fade-up">
+  <div class="stat"><h2>3</h2><p>Degrees Earned</p></div>
+  <div class="stat"><h2>14</h2><p>Fellowships &amp; Honors</p></div>
+  <div class="stat"><h2>7</h2><p>Courses Taught</p></div>
+  <div class="stat"><h2>3</h2><p>Countries Worked In</p></div>
+</div>
 
-
-<!-- ================= STATISTICS ================= -->
-
-<section class="statistics-section">
-
-    <div class="container statistics-grid">
-
-
-        <div class="stat-card">
-
-            <h2>
-                30+
-            </h2>
-
-            <p>
-                Research Publications
-            </p>
-
-        </div>
-
-
-        <div class="stat-card">
-
-            <h2>
-                1000+
-            </h2>
-
-            <p>
-                Citations
-            </p>
-
-        </div>
-
-
-        <div class="stat-card">
-
-            <h2>
-                ₹1Cr+
-            </h2>
-
-            <p>
-                Research Funding
-            </p>
-
-        </div>
-
-
-        <div class="stat-card">
-
-            <h2>
-                10+
-            </h2>
-
-            <p>
-                Student Mentorship
-            </p>
-
-        </div>
-
-
+<!-- ======================================================
+RESEARCH
+====================================================== -->
+<section id="research">
+  <div class="wrap">
+    <div class="numbered-head fade-up">
+      <div class="num">01</div>
+      <div>
+        <h2>Research</h2>
+        <p>My work spans human-centered design, artificial intelligence, and healthcare — with a focus on making both systems and services usable in resource-constrained contexts.</p>
+      </div>
     </div>
 
+    <div class="research-grid fade-up">
+      <div class="research-card">
+        <div class="tag">HCAI</div>
+        <h3>Human-Centered Artificial Intelligence</h3>
+        <p>Studying how AI systems can be designed around real user needs rather than technical capability alone.</p>
+      </div>
+      <div class="research-card">
+        <div class="tag">Healthcare Design</div>
+        <h3>Healthcare Infrastructure &amp; Services Design</h3>
+        <p>Designing deployable, frugal healthcare infrastructure for underserved and low-resource communities.</p>
+      </div>
+      <div class="research-card">
+        <div class="tag">Design Theory</div>
+        <h3>(More-than) Human-Centered Design</h3>
+        <p>Extending design methods beyond the individual user to social, ecological, and systemic considerations.</p>
+      </div>
+      <div class="research-card">
+        <div class="tag">Emerging Tech</div>
+        <h3>Computational Design &amp; XR</h3>
+        <p>Exploring extended reality and computational tools as part of the design and prototyping process.</p>
+      </div>
+      <div class="research-card">
+        <div class="tag">HCI</div>
+        <h3>Human-Computer Interaction</h3>
+        <p>Understanding how people interact with interfaces and systems across cultural and infrastructural contexts.</p>
+      </div>
+      <div class="research-card">
+        <div class="tag">Design for Society</div>
+        <h3>Frugal, Behavioral &amp; Critical Design</h3>
+        <p>Working on frugal innovation, behavioral design, and design education for global health challenges.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- ======================================================
+PULL QUOTE
+====================================================== -->
+<div class="quote-band fade-up">
+  <div class="wrap">
+    <blockquote>See. Feel. Act. Good design starts by understanding the people and systems we're designing for — especially when they're the ones furthest from access.</blockquote>
+    <cite>— Md Haseen Akhtar</cite>
+  </div>
+</div>
 
-
-<!-- ================= ABOUT SECTION ================= -->
-
-<section id="about" class="about-section">
-
-    <div class="container about-grid">
-
-
-        <div class="about-heading">
-
-            <p class="section-label">
-                About Me
-            </p>
-
-
-            <h2>
-                Building Human-Centered AI for Real-World Impact
-            </h2>
-
-
-        </div>
-
-
-
-        <div class="about-content">
-
-
-            <p>
-                I am a Human-Centered AI researcher specializing in
-                conversational agents, intelligent interfaces, and
-                immersive technologies for healthcare and education.
-            </p>
-
-
-            <p>
-                My research explores how AI systems can become more
-                adaptive, transparent, and socially aware by integrating
-                human-centered design principles with emerging AI
-                technologies.
-            </p>
-
-
-            <p>
-                During my doctoral research at IIT Kanpur as a
-                Prime Minister's Research Fellow (PMRF), I investigated
-                interactive AI systems that support learning,
-                feedback, and decision-making.
-            </p>
-
-
-            <p>
-                Currently, my work focuses on developing AI-powered
-                companions, XR-based training environments, and
-                sensor-fused conversational systems for healthcare
-                applications.
-            </p>
-
-
-
-            <div class="research-keywords">
-
-                <span>
-                    Human-Centered AI
-                </span>
-
-                <span>
-                    Conversational Agents
-                </span>
-
-                <span>
-                    Extended Reality
-                </span>
-
-                <span>
-                    Healthcare AI
-                </span>
-
-                <span>
-                    Interaction Design
-                </span>
-
-            </div>
-
-
-        </div>
-
-
+<!-- ======================================================
+PROJECTS
+====================================================== -->
+<section id="projects" class="section-alt">
+  <div class="wrap">
+    <div class="numbered-head fade-up">
+      <div class="num">02</div>
+      <div>
+        <h2>Projects</h2>
+        <p>Current and recent funded projects.</p>
+      </div>
     </div>
 
+    <div class="projects-grid fade-up">
+      <div class="project-card">
+        <div class="project-image">Mobile Primary Health Center</div>
+        <div class="project-body">
+          <div class="eyebrow">Healthcare Design</div>
+          <h3>Deployable Mobile Primary Health Center (mPHC)</h3>
+          <p>A cost-effective, deployable mPHC concept for low-resource settings, developed from socially driven frugal innovation research — addressing gaps in awareness, access, and affordability in healthcare delivery.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-image">Medical Device Innovation</div>
+        <div class="project-body">
+          <div class="eyebrow">Funded Research · 2025–26</div>
+          <h3>PMECRG: Medical Device Innovation</h3>
+          <p>Early-career research grant (₹70 lakh / ~USD 76k) from ANRF, Department of Science and Technology, Government of India, supporting medical device innovation research.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-image">Imperial-India Connect</div>
+        <div class="project-body">
+          <div class="eyebrow">Collaboration · 2025–26</div>
+          <h3>Imperial-India Connect Fund</h3>
+          <p>A collaborative research grant supporting work as a Visiting Researcher at Imperial College London, connecting design research between India and the UK.</p>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-image">BIRAC BIG Grant</div>
+        <div class="project-body">
+          <div class="eyebrow">Funded Research · 2022–23</div>
+          <h3>BIRAC BIG Grantee Fellowship</h3>
+          <p>Biotechnology Ignition Grant (₹50 lakh / ~USD 60k) from BIRAC, Department of Science and Technology, Government of India, supporting early-stage healthcare innovation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-   <!-- ================= RESEARCH SECTION ================= -->
-
-<section id="research" class="research-section">
-
-    <div class="container">
-
-        <div class="section-header">
-
-            <p class="section-label">
-                Research
-            </p>
-
-            <h2>
-                Designing Intelligent Systems Around Human Needs
-            </h2>
-
-            <p>
-                My research integrates Artificial Intelligence,
-                Human-Computer Interaction, and Design to create
-                adaptive systems that augment human capabilities.
-            </p>
-
-        </div>
-
-
-        <div class="research-grid">
-
-
-            <article class="research-card">
-
-                <div class="research-icon">
-                    AI
-                </div>
-
-                <h3>
-                    Human-Centered AI
-                </h3>
-
-                <p>
-                    Designing transparent, explainable, and adaptive
-                    AI systems that collaborate effectively with people.
-                </p>
-
-                <ul>
-                    <li>AI interaction design</li>
-                    <li>Trustworthy AI</li>
-                    <li>Human-AI collaboration</li>
-                </ul>
-
-            </article>
-
-
-
-            <article class="research-card">
-
-                <div class="research-icon">
-                    XR
-                </div>
-
-                <h3>
-                    Extended Reality & Simulation
-                </h3>
-
-                <p>
-                    Developing immersive environments for healthcare
-                    education, training, and experiential learning.
-                </p>
-
-                <ul>
-                    <li>Virtual patient simulations</li>
-                    <li>XR learning environments</li>
-                    <li>Interactive scenarios</li>
-                </ul>
-
-            </article>
-
-
-
-
-            <article class="research-card">
-
-                <div class="research-icon">
-                    CA
-                </div>
-
-                <h3>
-                    Conversational Agents
-                </h3>
-
-                <p>
-                    Creating intelligent conversational systems that
-                    understand context, emotion, and user intent.
-                </p>
-
-                <ul>
-                    <li>Voice interfaces</li>
-                    <li>AI companions</li>
-                    <li>Personalized interaction</li>
-                </ul>
-
-            </article>
-
-
-
-
-            <article class="research-card">
-
-                <div class="research-icon">
-                    DH
-                </div>
-
-                <h3>
-                    Digital Health Innovation
-                </h3>
-
-                <p>
-                    Building technology solutions that support
-                    healthcare professionals and patient wellbeing.
-                </p>
-
-                <ul>
-                    <li>Healthcare training</li>
-                    <li>Wearable sensing</li>
-                    <li>Health monitoring systems</li>
-                </ul>
-
-            </article>
-
-
-        </div>
-
+<!-- ======================================================
+PUBLICATIONS
+====================================================== -->
+<section id="publications">
+  <div class="wrap">
+    <div class="numbered-head fade-up">
+      <div class="num">03</div>
+      <div>
+        <h2>Publications</h2>
+        <p>Selected peer-reviewed work.</p>
+      </div>
     </div>
 
-</section>
-
-
-
-
-<!-- ================= RESEARCH APPROACH ================= -->
-
-<section class="approach-section">
-
-    <div class="container approach-grid">
-
-
-        <div class="approach-content">
-
-            <p class="section-label">
-                Research Approach
-            </p>
-
-
-            <h2>
-                From Design Concepts to Deployable AI Systems
-            </h2>
-
-
-            <p>
-                My research follows a human-centered design workflow
-                combining qualitative inquiry, prototyping,
-                artificial intelligence development, and empirical
-                evaluation.
-            </p>
-
-
-            <div class="workflow">
-
-
-                <div class="workflow-item">
-
-                    <span>
-                        01
-                    </span>
-
-                    <div>
-                        <h4>
-                            Understand
-                        </h4>
-
-                        <p>
-                            Study user needs, contexts, and challenges.
-                        </p>
-                    </div>
-
-                </div>
-
-
-
-                <div class="workflow-item">
-
-                    <span>
-                        02
-                    </span>
-
-                    <div>
-                        <h4>
-                            Design
-                        </h4>
-
-                        <p>
-                            Develop interaction frameworks and AI concepts.
-                        </p>
-                    </div>
-
-                </div>
-
-
-
-                <div class="workflow-item">
-
-                    <span>
-                        03
-                    </span>
-
-                    <div>
-                        <h4>
-                            Build
-                        </h4>
-
-                        <p>
-                            Prototype intelligent interactive systems.
-                        </p>
-                    </div>
-
-                </div>
-
-
-
-                <div class="workflow-item">
-
-                    <span>
-                        04
-                    </span>
-
-                    <div>
-                        <h4>
-                            Evaluate
-                        </h4>
-
-                        <p>
-                            Validate systems through user studies.
-                        </p>
-                    </div>
-
-                </div>
-
-
-            </div>
-
-
-        </div>
-
-
-
-        <div class="approach-visual">
-
-            <div class="diagram-box">
-
-                <div class="circle">
-                    Human
-                </div>
-
-                <div class="circle">
-                    AI
-                </div>
-
-                <div class="circle">
-                    Design
-                </div>
-
-
-                <div class="center-circle">
-                    Impact
-                </div>
-
-
-            </div>
-
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-
-
-
-<!-- ================= PUBLICATIONS SECTION ================= -->
-
-<section id="publications" class="publication-section">
-
-    <div class="container">
-
-
-        <div class="section-header">
-
-            <p class="section-label">
-                Publications
-            </p>
-
-
-            <h2>
-                Selected Research Contributions
-            </h2>
-
-
-            <p>
-                Research outcomes spanning AI interaction,
-                healthcare technology, immersive learning,
-                and intelligent systems.
-            </p>
-
-
-        </div>
-
-
-
-        <div class="publication-grid">
-
-
-
-            <article class="publication-card">
-
-
-                <div class="publication-year">
-                    2026
-                </div>
-
-
-                <h3>
-                    Designing Mobile and Wearable Sensor-Fused
-                    Conversational Agents for Health and Wellbeing
-                </h3>
-
-
-                <p>
-                    Exploring frameworks for designing AI agents
-                    integrating multimodal sensing and conversational
-                    interaction.
-                </p>
-
-
-                <a href="#">
-                    Read Publication →
-                </a>
-
-
-            </article>
-
-
-
-
-            <article class="publication-card">
-
-
-                <div class="publication-year">
-                    2025
-                </div>
-
-
-                <h3>
-                    AI-Assisted Feedback and Learning Systems
-                </h3>
-
-
-                <p>
-                    Investigating how AI feedback mechanisms can
-                    support learning and reflection.
-                </p>
-
-
-                <a href="#">
-                    Read Publication →
-                </a>
-
-
-            </article>
-
-
-
-
-            <article class="publication-card">
-
-
-                <div class="publication-year">
-                    2024
-                </div>
-
-
-                <h3>
-                    Human-Centered Design of Intelligent Interfaces
-                </h3>
-
-
-                <p>
-                    Examining design principles for effective
-                    human-AI collaboration.
-                </p>
-
-
-                <a href="#">
-                    Read Publication →
-                </a>
-
-
-            </article>
-
-
-
-        </div>
-
-
-    </div>
-
-</section>
-
-   <!-- ================= PROJECTS SECTION ================= -->
-
-<section id="projects" class="projects-section">
-
-    <div class="container">
-
-        <div class="section-header">
-
-            <p class="section-label">
-                Projects
-            </p>
-
-            <h2>
-                Research Projects & Innovation Platforms
-            </h2>
-
-            <p>
-                Selected projects translating human-centered AI
-                research into practical systems and prototypes.
-            </p>
-
-        </div>
-
-
-
-        <div class="projects-grid">
-
-
-            <article class="project-card">
-
-                <div class="project-image">
-                    <img 
-                    src="images/project-ai-companion.jpg"
-                    alt="AI companion project">
-                </div>
-
-
-                <div class="project-content">
-
-                    <span class="project-category">
-                        Healthcare AI
-                    </span>
-
-
-                    <h3>
-                        AI XR Healthcare Companion
-                    </h3>
-
-
-                    <p>
-                        An adaptive virtual patient and AI companion
-                        platform for healthcare education and clinical
-                        communication training.
-                    </p>
-
-
-                    <div class="project-tags">
-
-                        <span>
-                            Artificial Intelligence
-                        </span>
-
-                        <span>
-                            XR
-                        </span>
-
-                        <span>
-                            Healthcare
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-            </article>
-
-
-
-
-
-            <article class="project-card">
-
-                <div class="project-image">
-
-                    <img 
-                    src="images/project-conversational-agent.jpg"
-                    alt="Conversational agent project">
-
-                </div>
-
-
-                <div class="project-content">
-
-
-                    <span class="project-category">
-                        Conversational Systems
-                    </span>
-
-
-                    <h3>
-                        Context-Aware AI Agents
-                    </h3>
-
-
-                    <p>
-                        Designing conversational agents capable of
-                        personalized interaction through contextual
-                        reasoning and multimodal inputs.
-                    </p>
-
-
-
-                    <div class="project-tags">
-
-                        <span>
-                            LLMs
-                        </span>
-
-                        <span>
-                            HCI
-                        </span>
-
-                        <span>
-                            Interaction Design
-                        </span>
-
-                    </div>
-
-
-                </div>
-
-            </article>
-
-
-
-
-
-            <article class="project-card">
-
-
-                <div class="project-image">
-
-                    <img
-                    src="images/project-sensor-health.jpg"
-                    alt="Wearable sensor project">
-
-                </div>
-
-
-
-                <div class="project-content">
-
-
-                    <span class="project-category">
-                        Digital Health
-                    </span>
-
-
-                    <h3>
-                        Sensor-Fused Health Monitoring Systems
-                    </h3>
-
-
-                    <p>
-                        Integrating wearable sensing technologies
-                        with AI-driven interpretation for wellbeing
-                        applications.
-                    </p>
-
-
-
-                    <div class="project-tags">
-
-                        <span>
-                            Wearables
-                        </span>
-
-                        <span>
-                            Data Analytics
-                        </span>
-
-                        <span>
-                            Health
-                        </span>
-
-                    </div>
-
-
-                </div>
-
-
-            </article>
-
-
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-
-
-
-
-<!-- ================= GRANTS & AWARDS ================= -->
-
-<section id="awards" class="awards-section">
-
-
-    <div class="container">
-
-
-        <div class="section-header">
-
-
-            <p class="section-label">
-                Recognition
-            </p>
-
-
-            <h2>
-                Grants, Awards & Achievements
-            </h2>
-
-
-        </div>
-
-
-
-
-        <div class="timeline">
-
-
-
-            <div class="timeline-item">
-
-
-                <div class="timeline-year">
-                    2025–26
-                </div>
-
-
-                <div class="timeline-content">
-
-
-                    <h3>
-                        Prime Minister's Early Career Research Grant
-                    </h3>
-
-
-                    <p>
-                        Awarded the ANRF/DST Prime Minister's Early
-                        Career Research Grant for medical device
-                        innovation after joining IIT Hyderabad.
-                    </p>
-
-
-                </div>
-
-
-            </div>
-
-
-
-
-
-            <div class="timeline-item">
-
-
-                <div class="timeline-year">
-                    2020–2024
-                </div>
-
-
-                <div class="timeline-content">
-
-
-                    <h3>
-                        Prime Minister's Research Fellowship (PMRF)
-                    </h3>
-
-
-                    <p>
-                        Awarded India's premier doctoral fellowship
-                        for research excellence during PhD at IIT Kanpur.
-                    </p>
-
-
-                </div>
-
-
-            </div>
-
-
-
-
-
-            <div class="timeline-item">
-
-
-                <div class="timeline-year">
-                    2024
-                </div>
-
-
-                <div class="timeline-content">
-
-
-                    <h3>
-                        PhD in Human-Centered Design
-                    </h3>
-
-
-                    <p>
-                        Completed doctoral research focused on
-                        intelligent interactive systems and
-                        human-AI collaboration.
-                    </p>
-
-
-                </div>
-
-
-            </div>
-
-
-
-        </div>
-
-
-    </div>
-
-
-</section>
-
-
-
-
-
-
-
-<!-- ================= TEACHING SECTION ================= -->
-
-<section id="teaching" class="teaching-section">
-
-
-    <div class="container teaching-grid">
-
-
+    <div class="pub-list fade-up">
+      <div class="publication">
+        <div class="year">2024</div>
         <div>
-
-
-            <p class="section-label">
-                Teaching & Mentoring
-            </p>
-
-
-            <h2>
-                Educating the Next Generation of Designers and Researchers
-            </h2>
-
-
+          <h3>Learning from socially driven frugal innovation to design the future of healthcare: a case of mobile primary health center</h3>
+          <div class="venue">Health Care Science, 1–13</div>
+          <div class="authors">Akhtar, M.H., Ramkumar, J. (First &amp; Corresponding Author)</div>
         </div>
-
-
-
-
-        <div class="teaching-content">
-
-
-            <p>
-                My teaching philosophy combines design thinking,
-                technological understanding, and experiential learning.
-                I mentor students in developing solutions at the
-                intersection of design, AI, and emerging technologies.
-            </p>
-
-
-
-            <div class="teaching-list">
-
-
-                <div>
-                    <h4>
-                        Courses
-                    </h4>
-
-                    <p>
-                        Human-Computer Interaction,
-                        Interaction Design,
-                        Design Research Methods,
-                        AI for Designers
-                    </p>
-
-                </div>
-
-
-
-                <div>
-
-                    <h4>
-                        Mentorship
-                    </h4>
-
-                    <p>
-                        Undergraduate, postgraduate, and research
-                        mentorship in interdisciplinary projects.
-                    </p>
-
-                </div>
-
-
-            </div>
-
-
+        <div class="links">
+          <a href="https://doi.org/10.1002/hcs2.80" target="_blank" rel="noopener">DOI</a>
         </div>
-
-
+      </div>
     </div>
 
-
+    <p class="pub-note fade-up">Full and up-to-date publication list available on <a href="https://scholar.google.com/citations?user=PtSUxU0AAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar →</a></p>
+  </div>
 </section>
 
-   <!-- ================= CV SECTION ================= -->
-
-<section id="cv" class="cv-section">
-
-
-    <div class="container cv-container">
-
-
-        <div class="cv-content">
-
-
-            <p class="section-label">
-                Curriculum Vitae
-            </p>
-
-
-            <h2>
-                Academic Profile & Professional Journey
-            </h2>
-
-
-            <p>
-                Explore my complete academic background,
-                research contributions, teaching experience,
-                publications, grants, and professional activities.
-            </p>
-
-
-
-            <div class="cv-buttons">
-
-
-                <a href="files/Md_Akhtar_CV.pdf"
-                   class="btn primary-btn"
-                   target="_blank">
-
-                    Download CV
-
-                </a>
-
-
-
-                <a href="#publications"
-                   class="btn secondary-btn">
-
-                    Publications
-
-                </a>
-
-
-            </div>
-
-
-        </div>
-
-
-
-
-        <div class="cv-highlights">
-
-
-
-            <div class="cv-item">
-
-                <span>
-                    Education
-                </span>
-
-                <h3>
-                    Ph.D. Human-Centered Design
-                </h3>
-
-                <p>
-                    IIT Kanpur
-                </p>
-
-            </div>
-
-
-
-
-            <div class="cv-item">
-
-                <span>
-                    Fellowship
-                </span>
-
-                <h3>
-                    Prime Minister's Research Fellow
-                </h3>
-
-                <p>
-                    Government of India
-                </p>
-
-            </div>
-
-
-
-
-
-            <div class="cv-item">
-
-                <span>
-                    Research
-                </span>
-
-                <h3>
-                    AI + HCI + Healthcare
-                </h3>
-
-                <p>
-                    Intelligent interactive systems
-                </p>
-
-            </div>
-
-
-
-
-        </div>
-
-
+<!-- ======================================================
+AWARDS
+====================================================== -->
+<section class="section-alt">
+  <div class="wrap">
+    <div class="section-head fade-up">
+      <div class="eyebrow">Recognition</div>
+      <h2>Fellowships &amp; Academic Achievements</h2>
     </div>
 
-
+    <div class="award-list fade-up">
+      <div class="award"><div><h4>PMECRG — Medical Device Innovation</h4><p>ANRF, Department of Science and Technology, Government of India · ₹70 lakh (~USD 76k)</p></div><div class="year">2025–26</div></div>
+      <div class="award"><div><h4>Imperial-India Connect Fund Grantee</h4><p>Imperial College London</p></div><div class="year">2025–26</div></div>
+      <div class="award"><div><h4>FARE Fellow</h4><p>Department of Design, IIT Kanpur</p></div><div class="year">2024–25</div></div>
+      <div class="award"><div><h4>Fulbright-Nehru Doctoral Research Fellowship</h4><p>University of California, Berkeley</p></div><div class="year">2023–24</div></div>
+      <div class="award"><div><h4>BIRAC BIG Grantee Fellow</h4><p>BIRAC, Department of Science and Technology, Government of India · ₹50 lakh (~USD 60k)</p></div><div class="year">2022–23</div></div>
+      <div class="award"><div><h4>Ignite Grant</h4><p>Jacobs Institute for Design Innovation, UC Berkeley</p></div><div class="year">2023</div></div>
+      <div class="award"><div><h4>ITS–ANRF Travel Grant</h4><p>ASCILITE Conference, University of Melbourne</p></div><div class="year">2024</div></div>
+      <div class="award"><div><h4>Student Fellowship, UIA World Congress of Architects</h4><p>Copenhagen, Denmark</p></div><div class="year">2023</div></div>
+      <div class="award"><div><h4>Prime Minister's Research Fellowship (PMRF)</h4><p>Ph.D. in Design, IIT Kanpur</p></div><div class="year">2020–24</div></div>
+      <div class="award"><div><h4>Gold Medalist, B.Arch. — First Rank</h4><p>NIT Trichy</p></div><div class="year">2015–20</div></div>
+    </div>
+  </div>
 </section>
 
-
-
-
-
-
-
-
-<!-- ================= CONTACT SECTION ================= -->
-
-
-<section id="contact" class="contact-section">
-
-
-    <div class="container contact-container">
-
-
-
-        <div class="contact-header">
-
-
-            <p class="section-label">
-                Contact
-            </p>
-
-
-            <h2>
-                Let's Collaborate
-            </h2>
-
-
-            <p>
-                I am interested in collaborations involving
-                Human-Centered AI, healthcare innovation,
-                intelligent interfaces, and design research.
-            </p>
-
-
-        </div>
-
-
-
-
-
-        <div class="contact-grid">
-
-
-
-            <div class="contact-card">
-
-
-                <h3>
-                    Email
-                </h3>
-
-
-                <p>
-                    your.email@institution.edu
-                </p>
-
-
-            </div>
-
-
-
-
-            <div class="contact-card">
-
-
-                <h3>
-                    Institution
-                </h3>
-
-
-                <p>
-                    Department / School Name
-                </p>
-
-
-            </div>
-
-
-
-
-            <div class="contact-card">
-
-
-                <h3>
-                    Location
-                </h3>
-
-
-                <p>
-                    India / United Kingdom
-                </p>
-
-
-            </div>
-
-
-
-        </div>
-
-
-
-
-
-        <div class="contact-social">
-
-
-            <a href="#">
-                Google Scholar
-            </a>
-
-
-            <a href="#">
-                LinkedIn
-            </a>
-
-
-            <a href="#">
-                ResearchGate
-            </a>
-
-
-            <a href="#">
-                ORCID
-            </a>
-
-
-        </div>
-
-
-
+<!-- ======================================================
+TEACHING
+====================================================== -->
+<section id="teaching">
+  <div class="wrap">
+    <div class="section-head fade-up">
+      <div class="eyebrow">Courses</div>
+      <h2>Teaching</h2>
+      <p>B.Des. and M.Des. courses at IIT Hyderabad.</p>
     </div>
 
-
-
+    <div class="course-list fade-up">
+      <div class="course">
+        <div class="code">Fall 2025</div>
+        <h3>Basics of Design</h3>
+        <p>Foundational design course for incoming B.Des. students.</p>
+        <span class="term">B.Des.</span>
+      </div>
+      <div class="course">
+        <div class="code">Fall 2025</div>
+        <h3>Design Culture and Society</h3>
+        <p>Examining design's relationship to culture, society, and everyday practice.</p>
+        <span class="term">B.Des.</span>
+      </div>
+      <div class="course">
+        <div class="code">Fall 2025</div>
+        <h3>Design Process and Methodology</h3>
+        <p>Core design methods and process frameworks.</p>
+        <span class="term">B.Des.</span>
+      </div>
+      <div class="course">
+        <div class="code">Spring 2026</div>
+        <h3>Design Creativity and Innovation</h3>
+        <p>Creative ideation methods applied to design innovation.</p>
+        <span class="term">B.Des. / M.Des.</span>
+      </div>
+      <div class="course">
+        <div class="code">Spring 2026</div>
+        <h3>Basics of Photography</h3>
+        <p>Foundational visual and photographic literacy for design students.</p>
+        <span class="term">B.Des.</span>
+      </div>
+      <div class="course">
+        <div class="code">Spring 2026</div>
+        <h3>Universal Design</h3>
+        <p>Designing for accessibility and inclusion across diverse user needs.</p>
+        <span class="term">B.Des. / M.Des.</span>
+      </div>
+      <div class="course">
+        <div class="code">Spring 2026</div>
+        <h3>AI, Interaction Design and Virtual Environments</h3>
+        <p>Intersection of artificial intelligence, interaction design, and immersive environments.</p>
+        <span class="term">M.Des.</span>
+      </div>
+    </div>
+  </div>
 </section>
 
-
-
-
-
-
-
-
-
-<!-- ================= FOOTER ================= -->
-
-
-<footer class="site-footer">
-
-
-    <div class="container footer-container">
-
-
-        <div class="footer-brand">
-
-
-            <h3>
-                Md Akhtar
-            </h3>
-
-
-            <p>
-                Human-Centered AI Researcher
-            </p>
-
-
-        </div>
-
-
-
-
-
-        <div class="footer-links">
-
-
-            <a href="#home">
-                Home
-            </a>
-
-
-            <a href="#research">
-                Research
-            </a>
-
-
-            <a href="#publications">
-                Publications
-            </a>
-
-
-            <a href="#contact">
-                Contact
-            </a>
-
-
-        </div>
-
-
-
-
-
-        <div class="footer-copy">
-
-
-            <p>
-                © 2026 Md Akhtar. All rights reserved.
-            </p>
-
-
-        </div>
-
-
-
+<!-- ======================================================
+MENTORING
+====================================================== -->
+<section class="section-alt">
+  <div class="wrap">
+    <div class="section-head fade-up">
+      <div class="eyebrow">Advising</div>
+      <h2>Teaching &amp; Mentoring</h2>
     </div>
 
+    <div class="mentor-grid fade-up">
+      <div class="mentor-card">
+        <h4>M.Des. Thesis Supervision</h4>
+        <p>Co-supervised eight Master of Design theses with Prof. J. Ramkumar at the Department of Design, IIT Kanpur, resulting in four design patents.</p>
+      </div>
+      <div class="mentor-card">
+        <h4>Studio Teaching, UC Berkeley</h4>
+        <p>Taught Architectural Design Studio and Dissertation Studio to final-year Architecture and Master of Architecture students with Mark T. Anderson.</p>
+      </div>
+      <div class="mentor-card">
+        <h4>Deployables Club, UC Berkeley</h4>
+        <p>Advised a 7-member undergraduate and graduate team on "Designing the new star shade deployable system for space."</p>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- ======================================================
+TIMELINE
+====================================================== -->
+<section id="news">
+  <div class="wrap">
+    <div class="section-head fade-up">
+      <div class="eyebrow">Career</div>
+      <h2>Timeline</h2>
+    </div>
 
+    <div class="news-list fade-up">
+      <div class="news-card">
+        <div class="date">Jul 2025</div>
+        <div><h3>Joined IIT Hyderabad</h3><p>Started as Assistant Professor, Department of Design, IIT Hyderabad.</p></div>
+      </div>
+      <div class="news-card">
+        <div class="date">2025–26</div>
+        <div><h3>Awarded PMECRG grant</h3><p>Received the ANRF/DST Prime Minister's Early Career Research Grant for medical device innovation.</p></div>
+      </div>
+      <div class="news-card">
+        <div class="date">2025–26</div>
+        <div><h3>Imperial-India Connect Fund</h3><p>Selected as a grantee and Visiting Researcher at Imperial College London.</p></div>
+      </div>
+      <div class="news-card">
+        <div class="date">2024–25</div>
+        <div><h3>FARE Postdoctoral Fellowship</h3><p>Postdoctoral researcher in HCI, Department of Design, IIT Kanpur.</p></div>
+      </div>
+      <div class="news-card">
+        <div class="date">2024</div>
+        <div><h3>Ph.D. completed</h3><p>Completed Ph.D. in Human-Centred Design at IIT Kanpur as a Prime Minister Research Fellow, and published first-authored work in Health Care Science.</p></div>
+      </div>
+      <div class="news-card">
+        <div class="date">2023–24</div>
+        <div><h3>Fulbright-Nehru Fellowship, UC Berkeley</h3><p>Doctoral research fellowship at the Jacobs Institute for Design Innovation and Department of Architecture, UC Berkeley.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+SKILLS
+====================================================== -->
+<section class="section-alt">
+  <div class="wrap">
+    <div class="section-head fade-up">
+      <div class="eyebrow">Tools</div>
+      <h2>Technical Skills</h2>
+    </div>
+    <div class="skills-wrap fade-up">
+      <span class="skill-tag">Rhino3D</span>
+      <span class="skill-tag">Keyshot</span>
+      <span class="skill-tag">Unity 3D</span>
+      <span class="skill-tag">Shapr3D</span>
+      <span class="skill-tag">Photoshop</span>
+      <span class="skill-tag">Illustrator</span>
+      <span class="skill-tag">InDesign</span>
+      <span class="skill-tag">Adobe Premiere Pro</span>
+      <span class="skill-tag">Adobe After Effects</span>
+      <span class="skill-tag">Corel Visual Studio X</span>
+      <span class="skill-tag">Adobe XD</span>
+      <span class="skill-tag">Figma</span>
+      <span class="skill-tag">JASP</span>
+      <span class="skill-tag">BlueSky Statistics</span>
+      <span class="skill-tag">SPSS</span>
+      <span class="skill-tag">TikzEDt</span>
+      <span class="skill-tag">TeXstudio</span>
+      <span class="skill-tag">Mendeley</span>
+    </div>
+
+    <div class="membership-strip fade-up">
+      <span>Design Society Member</span>
+      <span>Design Research Society Member</span>
+      <span>IEEE Member</span>
+      <span>ASCILITE Member</span>
+      <span>SIGCHI Member</span>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+CONTACT
+====================================================== -->
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head fade-up">
+      <div class="eyebrow">Get in Touch</div>
+      <h2>Contact</h2>
+    </div>
+
+    <div class="contact-grid fade-up">
+      <dl class="contact-info">
+        <dt>Email</dt>
+        <dd><a href="mailto:haseen@des.iith.ac.in">haseen@des.iith.ac.in</a></dd>
+        <dt>Department</dt>
+        <dd>Department of Design, IIT Hyderabad</dd>
+        <dt>Address</dt>
+        <dd>Kandi, Sangareddy, Telangana 502284, India</dd>
+        <dt>Elsewhere</dt>
+        <dd><a href="https://scholar.google.com/citations?user=PtSUxU0AAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a> · <a href="https://iith.ac.in/des/haseen/" target="_blank" rel="noopener">Faculty Page</a></dd>
+      </dl>
+
+      <form class="contact-form" onsubmit="return false;">
+        <input type="text" placeholder="Name" required>
+        <input type="email" placeholder="Email" required>
+        <textarea placeholder="Message" required></textarea>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+FOOTER
+====================================================== -->
+<footer>
+  <div class="wrap footer-inner">
+    <a href="#" class="brand"><strong>Md Haseen Akhtar</strong></a>
+    <div class="footer-links">
+      <a href="#research">Research</a>
+      <a href="#projects">Projects</a>
+      <a href="#publications">Publications</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-links"><span>© 2026 Md Haseen Akhtar · Department of Design, IIT Hyderabad</span></div>
+  </div>
 </footer>
 
+<!-- ======================================================
+SCROLL TO TOP BUTTON
+====================================================== -->
+<button id="scrollTop" aria-label="Scroll to top">↑</button>
 
-
-
-
-
-<!-- ================= JAVASCRIPT ================= -->
-
+<!-- ======================================================
+JAVASCRIPT
+====================================================== -->
 <script>
 
-
-const menuButton = document.querySelector(".menu-toggle");
-
-const navigation = document.querySelector(".main-navigation");
-
-
-menuButton.addEventListener("click", function(){
-
-    navigation.classList.toggle("active");
-
+/************************************************
+Sticky Header
+************************************************/
+const header = document.querySelector("header");
+window.addEventListener("scroll",()=>{
+  if(window.scrollY>60){
+    header.style.boxShadow="0 10px 30px rgba(0,0,0,.08)";
+    header.style.height="72px";
+  } else {
+    header.style.boxShadow="none";
+    header.style.height="88px";
+  }
 });
 
+/************************************************
+Scroll To Top
+************************************************/
+const topButton=document.getElementById("scrollTop");
+window.addEventListener("scroll",()=>{
+  if(window.scrollY>700){ topButton.classList.add("show"); }
+  else { topButton.classList.remove("show"); }
+});
+topButton.onclick=()=>{ window.scrollTo({top:0,behavior:"smooth"}); };
 
+/************************************************
+Mobile Menu
+************************************************/
+const menuButton=document.getElementById("menuButton");
+const mobileMenu=document.getElementById("mobileMenu");
+menuButton.addEventListener("click",()=>{
+  mobileMenu.classList.toggle("open");
+  menuButton.classList.toggle("active");
+});
+mobileMenu.querySelectorAll("a").forEach(link=>{
+  link.onclick=()=>{
+    mobileMenu.classList.remove("open");
+    menuButton.classList.remove("active");
+  };
+});
+
+/************************************************
+Fade Animation
+************************************************/
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){ entry.target.classList.add("visible"); }
+  });
+},{threshold:.15});
 
 document.querySelectorAll(
-    ".main-navigation a"
-).forEach(link => {
-
-    link.addEventListener(
-        "click",
-        () => {
-
-            navigation.classList.remove("active");
-
-        }
-    );
-
+  "section,.research-card,.news-card,.publication,.award,.mentor-card,.project-card"
+).forEach(el=>{
+  el.classList.add("fade-up");
+  observer.observe(el);
 });
 
+/************************************************
+Animated Counters
+************************************************/
+const counters=document.querySelectorAll(".stat h2");
+const counterObserver=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      animateCounter(entry.target);
+      counterObserver.unobserve(entry.target);
+    }
+  });
+});
+counters.forEach(counter=>{ counterObserver.observe(counter); });
 
+function animateCounter(element){
+  const text=element.innerText;
+  const number=parseInt(text.replace(/\D/g,""));
+  if(isNaN(number)) return;
+  let current=0;
+  const increment=Math.ceil(number/40) || 1;
+  const suffix=text.replace(/[0-9]/g,"");
+  const timer=setInterval(()=>{
+    current+=increment;
+    if(current>=number){ current=number; clearInterval(timer); }
+    element.innerHTML=current+suffix;
+  },30);
+}
+
+/************************************************
+Active Navigation
+************************************************/
+const sections=document.querySelectorAll("section[id]");
+const navLinks=document.querySelectorAll("nav a");
+window.addEventListener("scroll",()=>{
+  let current="";
+  sections.forEach(section=>{
+    const top=section.offsetTop-150;
+    if(pageYOffset>=top){ current=section.getAttribute("id"); }
+  });
+  navLinks.forEach(link=>{
+    link.classList.remove("active");
+    if(link.getAttribute("href")==="#"+current){ link.classList.add("active"); }
+  });
+});
 
 </script>
-
-
-
 </body>
-
 </html>
