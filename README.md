@@ -88,7 +88,7 @@ git commit -m "rename to index.html for GitHub Pages"
 git push
 ```
 
-Your site will be live at `https://<your-username>.github.io/<repo-name>/`.
+Your site will be live at `https://haseendyson.github.io/haseenxdesign/
 
 ### Netlify / Vercel
 
